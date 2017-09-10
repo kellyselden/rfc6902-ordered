@@ -1,23 +1,21 @@
 'use strict';
 
 const expect = require('chai').expect;
-const applyPatch = require('../src');
+const applyPatch = require('../src').applyPatch;
 
 function clone(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
 
 describe('Unit - applyPatch', function() {
-  function test(myPackageJson, patch, toPackageJson, expected, remainingPatch) {
+  function test(myPackageJson, patch, toPackageJson, expected) {
     let patchClone = clone(patch);
 
-    let _remainingPatch = applyPatch(myPackageJson, patch, toPackageJson);
+    applyPatch(myPackageJson, patch, toPackageJson);
 
     expect(JSON.stringify(myPackageJson)).to.equal(JSON.stringify(expected));
 
     expect(patch, 'it does not mutate your patch').to.deep.equal(patchClone);
-
-    expect(_remainingPatch).to.deep.equal(remainingPatch);
   }
 
   it('works in the beginning', function() {
@@ -42,10 +40,8 @@ describe('Unit - applyPatch', function() {
       test1: 1,
       test2: 1
     };
-    let remainingPatch = [
-    ];
 
-    test(myPackageJson, patch, toPackageJson, expected, remainingPatch);
+    test(myPackageJson, patch, toPackageJson, expected);
   });
 
   it('works in the middle', function() {
@@ -70,10 +66,8 @@ describe('Unit - applyPatch', function() {
       test4: 1,
       test2: 1
     };
-    let remainingPatch = [
-    ];
 
-    test(myPackageJson, patch, toPackageJson, expected, remainingPatch);
+    test(myPackageJson, patch, toPackageJson, expected);
   });
 
   it('works at the end', function() {
@@ -98,10 +92,8 @@ describe('Unit - applyPatch', function() {
       test6: 1,
       test4: 1
     };
-    let remainingPatch = [
-    ];
 
-    test(myPackageJson, patch, toPackageJson, expected, remainingPatch);
+    test(myPackageJson, patch, toPackageJson, expected);
   });
 
   it('handles multiple patch', function() {
@@ -136,10 +128,8 @@ describe('Unit - applyPatch', function() {
       test8: 1,
       test0: 1
     };
-    let remainingPatch = [
-    ];
 
-    test(myPackageJson, patch, toPackageJson, expected, remainingPatch);
+    test(myPackageJson, patch, toPackageJson, expected);
   });
 
   it('handles nested objects', function() {
@@ -170,13 +160,11 @@ describe('Unit - applyPatch', function() {
         test2: 1
       }
     };
-    let remainingPatch = [
-    ];
 
-    test(myPackageJson, patch, toPackageJson, expected, remainingPatch);
+    test(myPackageJson, patch, toPackageJson, expected);
   });
 
-  it('ignores non-adds and arrays', function() {
+  it('performs upstream options as well', function() {
     let myPackageJson = {
       test1: 1,
       test2: [1]
@@ -186,17 +174,13 @@ describe('Unit - applyPatch', function() {
       { op: 'remove', path: '/test1' }
     ];
     let toPackageJson = {
-      test2: [1, 2]
+      test2: [1, 2],
+      ignored: 1
     };
     let expected = {
-      test1: 1,
-      test2: [1]
+      test2: [1, 2]
     };
-    let remainingPatch = [
-      { op: 'add', path: '/test2/-', value: 2 },
-      { op: 'remove', path: '/test1' }
-    ];
 
-    test(myPackageJson, patch, toPackageJson, expected, remainingPatch);
+    test(myPackageJson, patch, toPackageJson, expected);
   });
 });
