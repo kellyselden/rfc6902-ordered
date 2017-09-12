@@ -1,5 +1,7 @@
 # rfc6902-ordered
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kellyselden/rfc6902-ordered.svg)](https://greenkeeper.io/)
+
 [![npm version](https://badge.fury.io/js/rfc6902-ordered.svg)](https://badge.fury.io/js/rfc6902-ordered)
 [![Build Status](https://travis-ci.org/kellyselden/rfc6902-ordered.svg?branch=master)](https://travis-ci.org/kellyselden/rfc6902-ordered)
 [![Build status](https://ci.appveyor.com/api/projects/status/k5l6wg2u15khol3f/branch/master?svg=true)](https://ci.appveyor.com/project/kellyselden/rfc6902-ordered/branch/master)
