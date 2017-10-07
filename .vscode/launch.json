@@ -16,6 +16,9 @@
         "999999",
         "--colors"
       ],
+      "env": {
+        "DEBUG": "rfc6902-ordered"
+      },
       "internalConsoleOptions": "openOnSessionStart"
     }
   ]
