@@ -37,7 +37,7 @@ let ours = {
   key4: 4
 };
 
-rfc6902.applyPatch(ours, patch, theirs);
+rfc6902.applyPatch(ours, patch, source, theirs);
 
 // ours => {
 //   key1: 1,

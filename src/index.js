@@ -2,6 +2,7 @@
 
 const rfc6902 = require('rfc6902');
 const addToObjectAtIndex = require('./add-to-object-at-index');
+const matchMovedKeys = require('./match-moved-keys');
 
 const _applyPatch = rfc6902.applyPatch;
 
@@ -11,7 +12,7 @@ function get(obj, parts) {
   }, obj);
 }
 
-function applyPatch(myPackageJson, patch, toPackageJson) {
+function applyPatch(myPackageJson, patch, fromPackageJson, toPackageJson) {
   if (arguments.length > 2) {
     patch = patch.slice();
 
@@ -61,7 +62,11 @@ function applyPatch(myPackageJson, patch, toPackageJson) {
     }
   }
 
-  return _applyPatch.call(this, myPackageJson, patch);
+  let returnValue = _applyPatch.call(this, myPackageJson, patch);
+
+  matchMovedKeys(myPackageJson, fromPackageJson, toPackageJson);
+
+  return returnValue;
 }
 
 module.exports = rfc6902;
