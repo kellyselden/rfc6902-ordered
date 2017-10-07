@@ -5,15 +5,13 @@ const addToObjectAtIndex = require('./add-to-object-at-index');
 
 const _applyPatch = rfc6902.applyPatch;
 
-module.exports = rfc6902;
-
 function get(obj, parts) {
   return parts.reduce((total, next) => {
     return total[next];
   }, obj);
 }
 
-module.exports.applyPatch = function applyPatch(myPackageJson, patch, toPackageJson) {
+function applyPatch(myPackageJson, patch, toPackageJson) {
   if (arguments.length > 2) {
     patch = patch.slice();
 
@@ -64,4 +62,7 @@ module.exports.applyPatch = function applyPatch(myPackageJson, patch, toPackageJ
   }
 
   return _applyPatch.call(this, myPackageJson, patch);
-};
+}
+
+module.exports = rfc6902;
+module.exports.applyPatch = applyPatch;
