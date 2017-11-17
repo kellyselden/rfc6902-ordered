@@ -33,7 +33,7 @@
     "eslint": "^4.6.1",
     "eslint-config-sane": "^0.3.0",
     "eslint-plugin-mocha": "^4.11.0",
-    "eslint-plugin-prefer-let": "kellyselden/eslint-plugin-prefer-let",
+    "eslint-plugin-prefer-let": "^1.0.1",
     "mocha": "^4.0.0"
   }
 }
