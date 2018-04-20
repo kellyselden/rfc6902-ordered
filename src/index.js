@@ -36,15 +36,35 @@ function applyPatch(myPackageJson, patch, fromPackageJson, toPackageJson) {
 
       let indexInTo = toKeys.indexOf(addKey);
 
-      // default to last entry
-      let indexInMy = myKeys.length;
+      let indexInMy = -1;
 
+      // we should probably add a search threshold here
+      // so we don't match keys really far away
+
+      // search subsequent keys for match
       for (let _indexInTo = indexInTo + 1; _indexInTo < toKeys.length; _indexInTo++) {
         let nextKey = toKeys[_indexInTo];
         let _indexInMy = myKeys.indexOf(nextKey);
         if (_indexInMy !== -1) {
           indexInMy = _indexInMy;
           break;
+        }
+      }
+
+      if (indexInMy === -1) {
+        // search preceding keys for match
+        for (let _indexInTo = indexInTo - 1; _indexInTo >= 0; _indexInTo--) {
+          let prevKey = toKeys[_indexInTo];
+          let _indexInMy = myKeys.indexOf(prevKey);
+          if (_indexInMy !== -1) {
+            indexInMy = _indexInMy + 1;
+            break;
+          }
+        }
+
+        if (indexInMy === -1) {
+          // default to last entry
+          indexInMy = myKeys.length;
         }
       }
 
