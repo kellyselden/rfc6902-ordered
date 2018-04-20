@@ -114,8 +114,8 @@ describe('Unit - applyPatch', function() {
       expected: {
         test1: 1,
         test2: 1,
-        test6: 1,
-        test4: 1
+        test4: 1,
+        test6: 1
       }
     });
   });
