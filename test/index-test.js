@@ -1,7 +1,11 @@
 'use strict';
 
 const { expect } = require('chai');
-const { applyPatch } = require('../src');
+const rfc6902 = require('../src');
+
+const {
+  applyPatch
+} = rfc6902;
 
 function clone(obj) {
   return JSON.parse(JSON.stringify(obj));
@@ -251,5 +255,9 @@ describe('Unit - applyPatch', function() {
         test1: 1
       }
     });
+  });
+
+  it('re-exports rfc6902', function() {
+    expect(rfc6902).to.equal(require('rfc6902'));
   });
 });

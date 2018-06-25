@@ -4,7 +4,9 @@ const rfc6902 = require('rfc6902');
 const addToObjectAtIndex = require('./add-to-object-at-index');
 const matchMovedKeys = require('./match-moved-keys');
 
-const _applyPatch = rfc6902.applyPatch;
+const {
+  applyPatch: _applyPatch
+} = rfc6902;
 
 function get(obj, parts) {
   return parts.reduce((total, next) => {
