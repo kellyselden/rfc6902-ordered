@@ -1,14 +1,14 @@
 'use strict';
 
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const matchMovedKeys = require('../src/match-moved-keys');
 
-function test(options) {
-  let myPackageJson = options.myPackageJson;
-  let fromPackageJson = options.fromPackageJson;
-  let toPackageJson = options.toPackageJson;
-  let expected = options.expected;
-
+function test({
+  myPackageJson,
+  fromPackageJson,
+  toPackageJson,
+  expected
+}) {
   matchMovedKeys(myPackageJson, fromPackageJson, toPackageJson);
 
   expect(JSON.stringify(myPackageJson)).to.equal(JSON.stringify(expected));

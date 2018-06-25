@@ -1,20 +1,20 @@
 'use strict';
 
-const expect = require('chai').expect;
-const applyPatch = require('../src').applyPatch;
+const { expect } = require('chai');
+const { applyPatch } = require('../src');
 
 function clone(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
 
 describe('Unit - applyPatch', function() {
-  function test(options) {
-    let myPackageJson = options.myPackageJson;
-    let patch = options.patch;
-    let fromPackageJson = options.fromPackageJson;
-    let toPackageJson = options.toPackageJson;
-    let expected = options.expected;
-
+  function test({
+    myPackageJson,
+    patch,
+    fromPackageJson,
+    toPackageJson,
+    expected
+  }) {
     let patchClone = clone(patch);
 
     applyPatch(myPackageJson, patch, fromPackageJson, toPackageJson);

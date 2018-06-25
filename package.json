@@ -23,6 +23,9 @@
     "url": "https://github.com/kellyselden/rfc6902-ordered/issues"
   },
   "homepage": "https://github.com/kellyselden/rfc6902-ordered#readme",
+  "engines": {
+    "node": ">=6"
+  },
   "dependencies": {
     "debug": "^3.1.0",
     "rfc6902": "^2.2.1"
