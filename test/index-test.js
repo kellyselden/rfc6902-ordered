@@ -257,6 +257,35 @@ describe('Unit - applyPatch', function() {
     });
   });
 
+  it('handles keys that were moved, then new one\'s added', function() {
+    test({
+      myPackageJson: {
+        test3: 1,
+        test2: 1
+      },
+      patch: [
+        { op: 'add', path: '/test1', value: 1 },
+        { op: 'add', path: '/test4', value: 1 }
+      ],
+      fromPackageJson: {
+        test3: 1,
+        test2: 1
+      },
+      toPackageJson: {
+        test1: 1,
+        test2: 1,
+        test3: 1,
+        test4: 1
+      },
+      expected: {
+        test1: 1,
+        test2: 1,
+        test3: 1,
+        test4: 1
+      }
+    });
+  });
+
   it('re-exports rfc6902', function() {
     expect(rfc6902).to.equal(require('rfc6902'));
   });

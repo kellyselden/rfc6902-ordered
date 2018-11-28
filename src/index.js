@@ -15,6 +15,8 @@ function get(obj, parts) {
 }
 
 function applyPatch(myPackageJson, patch, fromPackageJson, toPackageJson) {
+  matchMovedKeys(myPackageJson, fromPackageJson, toPackageJson);
+
   if (arguments.length > 2) {
     patch = patch.slice();
 
@@ -85,8 +87,6 @@ function applyPatch(myPackageJson, patch, fromPackageJson, toPackageJson) {
   }
 
   let returnValue = _applyPatch.call(this, myPackageJson, patch);
-
-  matchMovedKeys(myPackageJson, fromPackageJson, toPackageJson);
 
   return returnValue;
 }
