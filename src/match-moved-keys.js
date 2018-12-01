@@ -34,9 +34,15 @@ function matchMovedKeys(myPackageJson, fromPackageJson, toPackageJson) {
     let indexInTo = toKeys.indexOf(key);
 
     if (indexInMy === -1) {
-      continue;
+      // continue;
     }
     if (indexInFrom === -1) {
+      // continue;
+    }
+    if (indexInMy === -1 && indexInFrom !== -1) {
+      continue;
+    }
+    if (indexInMy !== -1 && indexInFrom === -1) {
       continue;
     }
 
@@ -48,17 +54,26 @@ function matchMovedKeys(myPackageJson, fromPackageJson, toPackageJson) {
       matchMovedKeys(myKey, fromKey, toKey);
     }
 
+    if (Array.isArray(myPackageJson)) {
+      continue;
+    }
+
     if (indexInFrom === indexInTo) {
       continue;
     }
 
-    let value = myPackageJson[key];
+    let value;
+    if (indexInMy !== -1) {
+      value = myPackageJson[key];
+    } else {
+      value = toPackageJson[key];
+    }
 
     delete myPackageJson[key];
 
-    myKeys = Object.keys(myPackageJson);
+    let _myKeys = Object.keys(myPackageJson);
 
-    let find = finder(indexInTo, toKeys, myKeys);
+    let find = finder(indexInTo, toKeys, _myKeys);
 
     let newIndex = find(false);
     if (newIndex === -1) {
@@ -66,7 +81,7 @@ function matchMovedKeys(myPackageJson, fromPackageJson, toPackageJson) {
     }
     if (newIndex === -1) {
       debug(`"${key}": no reference key for ordering was found`);
-      newIndex = myKeys.length;
+      newIndex = _myKeys.length;
     }
 
     addToObjectAtIndex(myPackageJson, key, value, newIndex);

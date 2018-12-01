@@ -257,7 +257,7 @@ describe('Unit - applyPatch', function() {
     });
   });
 
-  it('handles keys that were moved, then new one\'s added', function() {
+  it.only('handles keys that were moved, then new one\'s added', function() {
     test({
       myPackageJson: {
         test3: 1,
