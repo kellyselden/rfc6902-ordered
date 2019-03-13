@@ -29,7 +29,7 @@ function applyPatch(myPackageJson, patch, fromPackageJson, toPackageJson) {
       let toObj = get(toPackageJson, parts);
       let myObj = get(myPackageJson, parts);
 
-      if (Array.isArray(myObj)) {
+      if (!myObj || Array.isArray(myObj)) {
         continue;
       }
 
