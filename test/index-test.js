@@ -209,6 +209,27 @@ describe('Unit - applyPatch', function() {
     });
   });
 
+  it('you don\'t have the parent object of an add', function() {
+    test({
+      myPackageJson: {
+      },
+      patch: [
+        { op: 'add', path: '/test/test', value: 1 }
+      ],
+      fromPackageJson: {
+        test: {
+        }
+      },
+      toPackageJson: {
+        test: {
+          test: 1
+        }
+      },
+      expected: {
+      }
+    });
+  });
+
   it('performs upstream options as well', function() {
     test({
       myPackageJson: {
