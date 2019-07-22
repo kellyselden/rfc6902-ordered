@@ -1,17 +1,25 @@
 module.exports = {
   root: true,
   parserOptions: {
-    ecmaVersion: 2017
+    ecmaVersion: 2018
   },
-  plugins: [
-    'mocha'
-  ],
-  extends: 'sane',
+  extends: 'sane-node',
   env: {
-    es6: true,
-    node: true
+    es6: true
   },
-  rules: {
-    'mocha/no-exclusive-tests': 'error'
-  }
+  overrides: [
+    {
+      files: 'test/**',
+      plugins: [
+        'mocha'
+      ],
+      extends: 'plugin:mocha/recommended',
+      env: {
+        mocha: true
+      },
+      rules: {
+        'mocha/no-nested-tests': 0
+      },
+    }
+  ]
 };
