@@ -84,9 +84,11 @@ function applyPatch(myPackageJson, patch, fromPackageJson, toPackageJson) {
     }
   }
 
-  let returnValue = _applyPatch.call(this, myPackageJson, patch);
+  matchMovedKeys(myPackageJson, fromPackageJson, toPackageJson);
 
   matchMovedKeys(myPackageJson, fromPackageJson, toPackageJson);
+
+  let returnValue = _applyPatch.call(this, myPackageJson, patch);
 
   return returnValue;
 }
