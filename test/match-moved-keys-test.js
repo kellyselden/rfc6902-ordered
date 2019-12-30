@@ -241,4 +241,30 @@ describe('Unit - matchMovedKeys', function() {
       }
     });
   });
+
+  it('inserted but matching', function() {
+    test({
+      myPackageJson: {
+        test1: 1,
+        test2: 1,
+        test3: 1,
+        test4: 1
+      },
+      fromPackageJson: {
+        test3: 1,
+        test4: 1
+      },
+      toPackageJson: {
+        test1: 1,
+        test3: 1,
+        test4: 1
+      },
+      expected: {
+        test1: 1,
+        test2: 1,
+        test3: 1,
+        test4: 1
+      }
+    });
+  });
 });
