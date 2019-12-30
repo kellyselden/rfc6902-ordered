@@ -242,7 +242,7 @@ describe('Unit - matchMovedKeys', function() {
     });
   });
 
-  it('inserted but matching', function() {
+  it('inserted but matching - 1', function() {
     test({
       myPackageJson: {
         test1: 1,
@@ -264,6 +264,36 @@ describe('Unit - matchMovedKeys', function() {
         test2: 1,
         test3: 1,
         test4: 1
+      }
+    });
+  });
+
+  it('inserted but matching - 2', function() {
+    test({
+      myPackageJson: {
+        test1: 1,
+        test2: 1,
+        test3: 1,
+        test4: 1,
+        test5: 1
+      },
+      fromPackageJson: {
+        test2: 1,
+        test4: 1,
+        test5: 1
+      },
+      toPackageJson: {
+        test1: 1,
+        test2: 1,
+        test4: 1,
+        test5: 1
+      },
+      expected: {
+        test1: 1,
+        test2: 1,
+        test3: 1,
+        test4: 1,
+        test5: 1
       }
     });
   });
