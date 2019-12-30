@@ -56,16 +56,16 @@ function matchMovedKeys(myPackageJson, fromPackageJson, toPackageJson) {
 
     delete myPackageJson[key];
 
-    myKeys = Object.keys(myPackageJson);
+    let _myKeys = Object.keys(myPackageJson);
 
-    let find = finder(indexInTo, toKeys, myKeys);
+    let find = finder(indexInTo, toKeys, _myKeys);
 
     let upIndex = find(false);
     let downIndex = find(true);
     let newIndex;
     if (upIndex === -1 && downIndex === -1) {
       debug(`"${key}": no reference key for ordering was found`);
-      newIndex = myKeys.length;
+      newIndex = _myKeys.length;
     } else if (upIndex === -1) {
       newIndex = downIndex;
     } else if (downIndex === -1) {
