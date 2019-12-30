@@ -37,37 +37,29 @@ function applyPatch(myPackageJson, patch, fromPackageJson, toPackageJson) {
       let myKeys = Object.keys(myObj);
 
       let indexInTo = toKeys.indexOf(addKey);
-
-      let indexInMy = -1;
+      let indexInMy = myKeys.indexOf(addKey);
 
       // we should probably add a search threshold here
       // so we don't match keys really far away
 
       // search subsequent keys for match
-      for (let _indexInTo = indexInTo + 1; _indexInTo < toKeys.length; _indexInTo++) {
+      for (let _indexInTo = indexInTo + 1; indexInMy === -1 && _indexInTo < toKeys.length; _indexInTo++) {
         let nextKey = toKeys[_indexInTo];
-        let _indexInMy = myKeys.indexOf(nextKey);
-        if (_indexInMy !== -1) {
-          indexInMy = _indexInMy;
-          break;
+        indexInMy = myKeys.indexOf(nextKey);
+      }
+
+      // search preceding keys for match
+      for (let _indexInTo = indexInTo - 1; indexInMy === -1 && _indexInTo >= 0; _indexInTo--) {
+        let prevKey = toKeys[_indexInTo];
+        indexInMy = myKeys.indexOf(prevKey);
+        if (indexInMy !== -1) {
+          indexInMy++;
         }
       }
 
       if (indexInMy === -1) {
-        // search preceding keys for match
-        for (let _indexInTo = indexInTo - 1; _indexInTo >= 0; _indexInTo--) {
-          let prevKey = toKeys[_indexInTo];
-          let _indexInMy = myKeys.indexOf(prevKey);
-          if (_indexInMy !== -1) {
-            indexInMy = _indexInMy + 1;
-            break;
-          }
-        }
-
-        if (indexInMy === -1) {
-          // default to last entry
-          indexInMy = myKeys.length;
-        }
+        // default to last entry
+        indexInMy = myKeys.length;
       }
 
       addToObjectAtIndex(myObj, addKey, toObj[addKey], indexInMy);
