@@ -52,6 +52,25 @@ function matchMovedKeys(myPackageJson, fromPackageJson, toPackageJson) {
       continue;
     }
 
+    // if the nearest matching keys are still above and below accordingly, skip
+    let upIndexInMy = -1;
+    let downIndexInMy = -1;
+    for (let upToKey of toKeys.slice(0, indexInTo).reverse()) {
+      upIndexInMy = myKeys.indexOf(upToKey);
+      if (upIndexInMy !== -1) {
+        break;
+      }
+    }
+    for (let downToKey of toKeys.slice(indexInTo + 1)) {
+      downIndexInMy = myKeys.indexOf(downToKey);
+      if (downIndexInMy !== -1) {
+        break;
+      }
+    }
+    if ((upIndexInMy === -1 || upIndexInMy < indexInMy) && (downIndexInMy === -1 || downIndexInMy > indexInMy)) {
+      continue;
+    }
+
     let value = myPackageJson[key];
 
     delete myPackageJson[key];
