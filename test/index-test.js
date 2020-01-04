@@ -230,6 +230,31 @@ describe('Unit - applyPatch', function() {
     });
   });
 
+  it('replaces our property with an add', function() {
+    test({
+      myPackageJson: {
+        test: {
+          foo: 1
+        }
+      },
+      patch: [
+        { op: 'add', path: '/test', value: { bar: 2 } }
+      ],
+      fromPackageJson: {
+      },
+      toPackageJson: {
+        test: {
+          bar: 2
+        }
+      },
+      expected: {
+        test: {
+          bar: 2
+        }
+      }
+    });
+  });
+
   it('performs upstream options as well', function() {
     test({
       myPackageJson: {

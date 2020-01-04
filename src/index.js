@@ -39,6 +39,10 @@ function applyPatch(myPackageJson, patch, fromPackageJson, toPackageJson) {
       let indexInTo = toKeys.indexOf(addKey);
       let indexInMy = myKeys.indexOf(addKey);
 
+      if (indexInMy !== -1) {
+        continue;
+      }
+
       // we should probably add a search threshold here
       // so we don't match keys really far away
 
