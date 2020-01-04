@@ -1,7 +1,13 @@
 language: node_js
 node_js:
-  - "8"
-
+- '8'
+branches:
+  only:
+  - master
+  # npm version tags
+  - /^v\d+\.\d+\.\d+$/
 cache:
   directories:
-    - $HOME/.npm
+  - $HOME/.npm
+before_script:
+- npm run lint
