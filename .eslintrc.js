@@ -3,23 +3,30 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018
   },
-  extends: 'sane-node',
   env: {
     es6: true
   },
+  extends: [
+    'sane-node'
+  ],
   overrides: [
     {
-      files: 'test/**',
-      plugins: [
-        'mocha'
+      files: [
+        'test/**/*-test.js'
       ],
-      extends: 'plugin:mocha/recommended',
       env: {
         mocha: true
       },
+      plugins: [
+        'mocha'
+      ],
+      extends: [
+        'plugin:mocha/recommended'
+      ],
       rules: {
-        'mocha/no-nested-tests': 0
-      },
+        'mocha/no-exclusive-tests': 'error',
+        'mocha/no-nested-tests': 'off'
+      }
     }
   ]
 };
