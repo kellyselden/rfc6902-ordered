@@ -9,12 +9,11 @@ branches:
 cache:
   directories:
   - $HOME/.npm
-before_script:
-- npm run lint
 jobs:
   include:
+  - before_script:
+    - npm run lint
   - if: branch = master AND type = pull_request
-    before_script: ignore
     script:
     - git checkout -B master
     - git remote set-url origin https://$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG.git
