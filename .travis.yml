@@ -11,9 +11,11 @@ cache:
   - "$HOME/.npm"
 jobs:
   include:
-  - before_script:
+  - name: test
+    before_script:
     - npm run lint
   - if: branch = master AND type = pull_request
+    name: ember-cli-update
     script:
     - git checkout $TRAVIS_PULL_REQUEST_SHA
     - git checkout -B $TRAVIS_PULL_REQUEST_BRANCH
