@@ -8,7 +8,7 @@ branches:
   - /^v\d+\.\d+\.\d+$/
 cache:
   directories:
-  - $HOME/.npm
+  - "$HOME/.npm"
 jobs:
   include:
   - before_script:

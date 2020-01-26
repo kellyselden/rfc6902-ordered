@@ -37,7 +37,7 @@
     "cross-env": "^6.0.0",
     "eslint": "^6.8.0",
     "eslint-config-sane": "0.8.5",
-    "eslint-config-sane-node": "0.2.2",
+    "eslint-config-sane-node": "0.3.0",
     "eslint-plugin-json-files": "0.8.0",
     "eslint-plugin-mocha": "^6.2.2",
     "eslint-plugin-node": "^11.0.0",
@@ -46,7 +46,7 @@
     "renovate-config-standard": "^2.0.0"
   },
   "optionalDependencies": {
-    "@kellyselden/node-template": "0.3.1",
+    "@kellyselden/node-template": "0.4.1",
     "standard-node-template": "0.0.1"
   }
 }
