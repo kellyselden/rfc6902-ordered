@@ -8,6 +8,7 @@ branches:
   - /^v\d+\.\d+\.\d+$/
 cache:
   directories:
+<<<<<<< HEAD
   - $HOME/.npm
 jobs:
   include:
@@ -19,3 +20,8 @@ jobs:
     - git checkout -B $TRAVIS_PULL_REQUEST_BRANCH
     - git remote set-url origin https://$GITHUB_TOKEN@github.com/$TRAVIS_PULL_REQUEST_SLUG.git
     - npx https://github.com/kellyselden/ember-cli-update-action.git#push_origin --pull-request-url https://api.github.com/repos/$TRAVIS_REPO_SLUG/pulls/$TRAVIS_PULL_REQUEST --autofix-command "npm run lint -- --fix"
+=======
+  - "$HOME/.npm"
+before_script:
+- npm run lint
+>>>>>>> 58d4bbc... v0.3.1...v0.5.8
