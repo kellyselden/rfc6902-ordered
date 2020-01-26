@@ -1,6 +1,7 @@
 'use strict';
 
-const { expect } = require('chai');
+const { describe } = require('./helpers/mocha');
+const { expect } = require('./helpers/chai');
 const matchMovedKeys = require('../src/match-moved-keys');
 
 function test({
@@ -14,7 +15,7 @@ function test({
   expect(JSON.stringify(myPackageJson)).to.equal(JSON.stringify(expected));
 }
 
-describe('Unit - matchMovedKeys', function() {
+describe(matchMovedKeys, function() {
   it('reorders', function() {
     test({
       myPackageJson: {

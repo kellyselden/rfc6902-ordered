@@ -1,6 +1,7 @@
 'use strict';
 
-const { expect } = require('chai');
+const { describe } = require('./helpers/mocha');
+const { expect } = require('./helpers/chai');
 const rfc6902 = require('../src');
 
 const {
@@ -11,7 +12,7 @@ function clone(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
 
-describe('Unit - applyPatch', function() {
+describe(applyPatch, function() {
   function test({
     myPackageJson,
     patch,
