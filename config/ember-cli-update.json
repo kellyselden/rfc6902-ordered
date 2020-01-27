@@ -16,7 +16,11 @@
       "version": "0.8.4",
       "blueprints": [
         {
-          "name": "@kellyselden/node-template"
+          "name": "@kellyselden/node-template",
+          "options": [
+            "--repo-slug=kellyselden/rfc6902-ordered",
+            "--ci-provider=travis-ci"
+          ]
         }
       ]
     }
