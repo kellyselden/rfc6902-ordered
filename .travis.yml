@@ -6,6 +6,9 @@ branches:
   - master
   # npm version tags
   - /^v\d+\.\d+\.\d+$/
+env:
+  global:
+  - DEBUG=rfc6902-ordered
 cache:
   directories:
   - "$HOME/.npm"
