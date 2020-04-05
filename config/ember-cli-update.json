@@ -19,7 +19,8 @@
           "name": "@kellyselden/node-template",
           "options": [
             "--repo-slug=kellyselden/rfc6902-ordered",
-            "--travis-ci"
+            "--travis-ci",
+            "--renovate"
           ]
         }
       ]
