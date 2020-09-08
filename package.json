@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "debug": "^4.0.0",
-    "rfc6902": "^3.0.1"
+    "rfc6902": "^4.0.0"
   },
   "devDependencies": {
     "@kellyselden/node-template": "0.12.3",
