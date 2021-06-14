@@ -10,6 +10,8 @@ const {
 
 function get(obj, parts) {
   return parts.reduce((total, next) => {
+    if (isPrototypePolluted(next))
+      return {}
     return total[next];
   }, obj);
 }
@@ -85,6 +87,10 @@ function applyPatch(myPackageJson, patch, fromPackageJson, toPackageJson) {
   matchMovedKeys(myPackageJson, fromPackageJson, toPackageJson);
 
   return returnValue;
+}
+
+function isPrototypePolluted(key) {
+  return ['__proto__', 'constructor', 'prototype'].includes(key);
 }
 
 module.exports = rfc6902;
