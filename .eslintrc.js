@@ -27,6 +27,8 @@ module.exports = {
       ],
       rules: {
         'mocha/no-exclusive-tests': 'error',
+        'mocha/no-empty-description': 'off',
+
         'mocha/no-nested-tests': 'off'
       }
     }
