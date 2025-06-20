@@ -1,6 +1,6 @@
 {
   "name": "rfc6902-ordered",
-  "version": "9.0.0",
+  "version": "10.0.0",
   "description": "https://github.com/chbrown/rfc6902 plus object key ordering",
   "main": "src",
   "files": [
