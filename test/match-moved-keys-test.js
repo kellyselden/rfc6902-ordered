@@ -8,7 +8,7 @@ function test({
   myPackageJson,
   fromPackageJson,
   toPackageJson,
-  expected
+  expected,
 }) {
   matchMovedKeys(myPackageJson, fromPackageJson, toPackageJson);
 
@@ -20,20 +20,20 @@ describe(matchMovedKeys, function() {
     test({
       myPackageJson: {
         test1: 1,
-        test2: 1
+        test2: 1,
       },
       fromPackageJson: {
         test1: 1,
-        test2: 1
+        test2: 1,
       },
       toPackageJson: {
         test2: 1,
-        test1: 1
+        test1: 1,
       },
       expected: {
         test2: 1,
-        test1: 1
-      }
+        test1: 1,
+      },
     });
   });
 
@@ -42,27 +42,27 @@ describe(matchMovedKeys, function() {
       myPackageJson: {
         test: {
           test1: 1,
-          test2: 1
-        }
+          test2: 1,
+        },
       },
       fromPackageJson: {
         test: {
           test1: 1,
-          test2: 1
-        }
+          test2: 1,
+        },
       },
       toPackageJson: {
         test: {
           test2: 1,
-          test1: 1
-        }
+          test1: 1,
+        },
       },
       expected: {
         test: {
           test2: 1,
-          test1: 1
-        }
-      }
+          test1: 1,
+        },
+      },
     });
   });
 
@@ -70,22 +70,22 @@ describe(matchMovedKeys, function() {
     test({
       myPackageJson: {
         test1: 1,
-        test2: 1
+        test2: 1,
       },
       fromPackageJson: {
         test3: 1,
         test1: 1,
-        test2: 1
+        test2: 1,
       },
       toPackageJson: {
         test3: 1,
         test2: 1,
-        test1: 1
+        test1: 1,
       },
       expected: {
         test2: 1,
-        test1: 1
-      }
+        test1: 1,
+      },
     });
   });
 
@@ -93,22 +93,22 @@ describe(matchMovedKeys, function() {
     test({
       myPackageJson: {
         test1: 1,
-        test2: 1
+        test2: 1,
       },
       fromPackageJson: {
         test1: 1,
         test3: 1,
-        test2: 1
+        test2: 1,
       },
       toPackageJson: {
         test2: 1,
         test3: 1,
-        test1: 1
+        test1: 1,
       },
       expected: {
         test2: 1,
-        test1: 1
-      }
+        test1: 1,
+      },
     });
   });
 
@@ -116,22 +116,22 @@ describe(matchMovedKeys, function() {
     test({
       myPackageJson: {
         test1: 1,
-        test2: 1
+        test2: 1,
       },
       fromPackageJson: {
         test1: 1,
         test2: 1,
-        test3: 1
+        test3: 1,
       },
       toPackageJson: {
         test2: 1,
         test1: 1,
-        test3: 1
+        test3: 1,
       },
       expected: {
         test2: 1,
-        test1: 1
-      }
+        test1: 1,
+      },
     });
   });
 
@@ -139,21 +139,21 @@ describe(matchMovedKeys, function() {
     test({
       myPackageJson: {
         test1: 1,
-        test2: 1
+        test2: 1,
       },
       fromPackageJson: {
         test1: 1,
-        test2: 1
+        test2: 1,
       },
       toPackageJson: {
         test2: 1,
         test1: 1,
-        test3: 1
+        test3: 1,
       },
       expected: {
         test2: 1,
-        test1: 1
-      }
+        test1: 1,
+      },
     });
   });
 
@@ -161,21 +161,21 @@ describe(matchMovedKeys, function() {
     test({
       myPackageJson: {
         test1: 1,
-        test2: 1
+        test2: 1,
       },
       fromPackageJson: {
         test1: 1,
         test2: 1,
-        test3: 1
+        test3: 1,
       },
       toPackageJson: {
         test2: 1,
-        test1: 1
+        test1: 1,
       },
       expected: {
         test2: 1,
-        test1: 1
-      }
+        test1: 1,
+      },
     });
   });
 
@@ -183,20 +183,20 @@ describe(matchMovedKeys, function() {
     test({
       myPackageJson: {
         test1: 1,
-        test2: 1
+        test2: 1,
       },
       fromPackageJson: {
         test1: 2,
-        test2: 2
+        test2: 2,
       },
       toPackageJson: {
         test2: 2,
-        test1: 2
+        test1: 2,
       },
       expected: {
         test2: 1,
-        test1: 1
-      }
+        test1: 1,
+      },
     });
   });
 
@@ -209,7 +209,7 @@ describe(matchMovedKeys, function() {
         test2: 1,
         test10: 1,
         test8: 1,
-        test0: 1
+        test0: 1,
       },
       fromPackageJson: {
         test1: 1,
@@ -218,7 +218,7 @@ describe(matchMovedKeys, function() {
         test2: 1,
         test7: 1,
         test9: 1,
-        test0: 1
+        test0: 1,
       },
       toPackageJson: {
         test1: 1,
@@ -229,7 +229,7 @@ describe(matchMovedKeys, function() {
         test7: 1,
         test8: 1,
         test9: 1,
-        test0: 1
+        test0: 1,
       },
       expected: {
         test1: 1,
@@ -238,8 +238,8 @@ describe(matchMovedKeys, function() {
         test2: 1,
         test10: 1,
         test8: 1,
-        test0: 1
-      }
+        test0: 1,
+      },
     });
   });
 
@@ -249,23 +249,23 @@ describe(matchMovedKeys, function() {
         test1: 1,
         test2: 1,
         test3: 1,
-        test4: 1
+        test4: 1,
       },
       fromPackageJson: {
         test3: 1,
-        test4: 1
+        test4: 1,
       },
       toPackageJson: {
         test1: 1,
         test3: 1,
-        test4: 1
+        test4: 1,
       },
       expected: {
         test1: 1,
         test2: 1,
         test3: 1,
-        test4: 1
-      }
+        test4: 1,
+      },
     });
   });
 
@@ -276,26 +276,26 @@ describe(matchMovedKeys, function() {
         test2: 1,
         test3: 1,
         test4: 1,
-        test5: 1
+        test5: 1,
       },
       fromPackageJson: {
         test2: 1,
         test4: 1,
-        test5: 1
+        test5: 1,
       },
       toPackageJson: {
         test1: 1,
         test2: 1,
         test4: 1,
-        test5: 1
+        test5: 1,
       },
       expected: {
         test1: 1,
         test2: 1,
         test3: 1,
         test4: 1,
-        test5: 1
-      }
+        test5: 1,
+      },
     });
   });
 
@@ -304,20 +304,20 @@ describe(matchMovedKeys, function() {
       myPackageJson: {
         test1: 1,
         test2: 1,
-        test3: 1
+        test3: 1,
       },
       fromPackageJson: {
-        test3: 1
+        test3: 1,
       },
       toPackageJson: {
         test1: 1,
-        test3: 1
+        test3: 1,
       },
       expected: {
         test1: 1,
         test2: 1,
-        test3: 1
-      }
+        test3: 1,
+      },
     });
   });
 });
