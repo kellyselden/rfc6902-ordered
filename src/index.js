@@ -5,7 +5,7 @@ const addToObjectAtIndex = require('./add-to-object-at-index');
 const matchMovedKeys = require('./match-moved-keys');
 
 const {
-  applyPatch: _applyPatch
+  applyPatch: _applyPatch,
 } = rfc6902;
 
 function get(obj, parts) {
