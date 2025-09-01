@@ -2,6 +2,21 @@
   "name": "rfc6902-ordered",
   "version": "10.0.0",
   "description": "https://github.com/chbrown/rfc6902 plus object key ordering",
+  "keywords": [
+    "json",
+    "patch",
+    "rfc6902"
+  ],
+  "homepage": "https://github.com/kellyselden/rfc6902-ordered#readme",
+  "bugs": {
+    "url": "https://github.com/kellyselden/rfc6902-ordered/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kellyselden/rfc6902-ordered.git"
+  },
+  "license": "MIT",
+  "author": "Kelly Selden",
   "main": "src",
   "files": [
     "src"
@@ -9,24 +24,6 @@
   "scripts": {
     "lint": "eslint",
     "test": "mocha"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kellyselden/rfc6902-ordered.git"
-  },
-  "keywords": [
-    "json",
-    "patch",
-    "rfc6902"
-  ],
-  "author": "Kelly Selden",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kellyselden/rfc6902-ordered/issues"
-  },
-  "homepage": "https://github.com/kellyselden/rfc6902-ordered#readme",
-  "engines": {
-    "node": ">=20.9"
   },
   "dependencies": {
     "debug": "^4.0.0",
@@ -36,11 +33,14 @@
     "@kellyselden/node-template": "6.9.0",
     "chai": "^4.5.0",
     "eslint": "^9.34.0",
-    "eslint-config-sane-node": "^5.0.0",
+    "eslint-config-sane-node": "^6.0.0",
     "eslint-plugin-mocha": "^10.5.0",
     "mocha": "^11.7.1",
     "mocha-helpers": "^10.2.1",
     "renovate-config-standard": "2.4.2",
     "standard-node-template": "7.2.0"
+  },
+  "engines": {
+    "node": ">=20.9"
   }
 }
