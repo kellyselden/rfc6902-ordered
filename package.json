@@ -30,7 +30,7 @@
     "rfc6902": "^5.0.0"
   },
   "devDependencies": {
-    "@kellyselden/node-template": "6.10.0",
+    "@kellyselden/node-template": "6.11.0",
     "chai": "^4.5.0",
     "eslint": "^9.34.0",
     "eslint-config-sane-node": "^6.0.0",
