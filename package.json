@@ -35,7 +35,7 @@
     "chai": "^4.5.0",
     "eslint": "^9.34.0",
     "mocha": "^11.7.1",
-    "mocha-helpers": "^10.2.1",
+    "mocha-helpers": "^11.0.0",
     "renovate-config-standard": "2.4.2",
     "standard-node-template": "8.0.0"
   },
