@@ -13,6 +13,37 @@ function clone(obj) {
 }
 
 describe(applyPatch, function() {
+  it('applies patches without ordering arguments', function() {
+    let obj = { a: 1 };
+    let patch = [{ op: 'add', path: '/b', value: 2 }];
+
+    expect(applyPatch(obj, patch)).to.deep.equal([null]);
+    expect(obj).to.deep.equal({ a: 1, b: 2 });
+    expect(patch).to.deep.equal([{ op: 'add', path: '/b', value: 2 }]);
+  });
+
+  it('applies patches when only the source ordering argument is provided', function() {
+    let obj = { a: 1 };
+
+    expect(applyPatch(obj, [{ op: 'add', path: '/b', value: 2 }], { a: 1 })).to.deep.equal([null]);
+    expect(obj).to.deep.equal({ a: 1, b: 2 });
+  });
+
+  it('returns patch errors without ordering arguments', function() {
+    let obj = { a: 1 };
+    let result = applyPatch(obj, [{ op: 'remove', path: '/missing' }]);
+
+    expect(result[0]).to.be.instanceOf(Error);
+    expect(obj).to.deep.equal({ a: 1 });
+  });
+
+  it('handles an empty patch without ordering arguments', function() {
+    let obj = { a: 1 };
+
+    expect(applyPatch(obj, [])).to.deep.equal([]);
+    expect(obj).to.deep.equal({ a: 1 });
+  });
+
   function test({
     myPackageJson,
     patch,

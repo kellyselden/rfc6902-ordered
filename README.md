@@ -6,7 +6,7 @@ https://github.com/chbrown/rfc6902 plus object key ordering
 
 Motivated by https://github.com/chbrown/rfc6902/issues/22
 
-The same as https://github.com/chbrown/rfc6902, except `applyPatch` can take an optional third parameter. It can use the `output` param of `createPatch` to preserve object key order on the object you're patching.
+The same as https://github.com/chbrown/rfc6902, except `applyPatch` can take optional third and fourth parameters: the source and target objects used to create the patch. When both are provided, it preserves object key order on the object you're patching. Otherwise, it applies the patch using the standard `rfc6902` behavior.
 
 ```js
 const rfc6902 = require('rfc6902-ordered');

@@ -15,6 +15,10 @@ function get(obj, parts) {
 }
 
 function applyPatch(myPackageJson, patch, fromPackageJson, toPackageJson) {
+  if (fromPackageJson === undefined || toPackageJson === undefined) {
+    return _applyPatch.call(this, myPackageJson, patch);
+  }
+
   if (arguments.length > 2) {
     patch = patch.slice();
 
